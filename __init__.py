@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, redirect, render_template 
+from flask import Flask, request, Response, redirect, render_template, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 
 import os
@@ -8,7 +8,20 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQL_DATABASE_URI', 'sqli
 db = SQLAlchemy(app)
 
 class InvalidUsage(Exception):
-  pass
+    status_code = 400
+
+    def __init__(self, message, status_code=None, payload=None):
+        Exception.__init__(self)
+        self.message = message
+        if status_code is not None:
+            self.status_code = status_code
+        self.payload = payload
+
+    def to_dict(self):
+        rv = dict(self.payload or ())
+        rv['message'] = self.message
+        return rv
+
 
 @app.route("/submit_procedure")
 def submitProcedure():
@@ -20,7 +33,10 @@ def submitProcedure():
   if cost is None:
     raise InvalidUsage('must supply cost', status_code=400) 
 
-  costInt = int(cost)
+  try:
+    costInt = int(cost)
+  except ValueError:
+    raise InvalidUsage('cost must be a number', status_code=400)
 
   procedure = Procedure(name, costInt)
   db.session.add(procedure)
@@ -40,7 +56,7 @@ def showProcedures():
   return render_template('procedures.html', procedures=procedures)
 
 @app.errorhandler(InvalidUsage)
-def handle_invalid_usage(error):
+def handleInvalidUsage(error):
   response = jsonify(error.to_dict())
   response.status_code = error.status_code
   return response
