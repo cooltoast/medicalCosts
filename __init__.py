@@ -73,7 +73,7 @@ class Procedure(db.Model):
     self.cost = cost
 
   def __repr__(self):
-    return '<Procedure %s>' % self.name
+    return '<Procedure object %s>' % self.name
 
 if __name__ == "__main__":
     debug = 'DEBUG' in os.environ.keys()

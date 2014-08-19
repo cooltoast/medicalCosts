@@ -5,7 +5,12 @@
 </head>
 <body>
 <div>
-  {{ procedures }}
+  <ul>
+  {% for procedure in procedures %}
+  <li><h4>Procedure: {{ procedure.name }}</h4>
+  Cost: {{ procedure.cost }}</li>
+  {% endfor %}
+  </ul>
 </div>
 </body>
 </html>
