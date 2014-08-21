@@ -45,9 +45,10 @@ def submitProcedure():
   return redirect('/')
 
 
+# TODO make a better intro page
 @app.route("/")
-def hello():
-  return "hello and welcome to medicalcosts.com"
+def displayIndex():
+  return render_template('index.html')
 
 @app.route("/show_procedures")
 def showProcedures():
