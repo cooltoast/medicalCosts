@@ -11,16 +11,18 @@
   <body>
     <div>
 
-    <form role="form">
+    <form role='form' class="pure-form pure-form-aligned" name="input" action="/submit_procedure" method="get">
       <div class="form-group">
-        <label for="procedureName">Procedure Name</label>
-        <input type="text" class="form-control" id="procedureName" placeholder="Enter name">
+        <input name="name" type="text" align="center" placeholder="Procedure name">
       </div>
+
       <div class="form-group">
-        <label for="procedureCost">Procedure Cost</label>
-        <input type="nubmer" class="form-control" id="procedureCost" placeholder="Enter cost">
+        <input name="cost" type="text" placeholder="Procedure cost">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+
+      <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary"></button>
+      </div>
     </form>
 
     <a class="btn btn-default" href="/show_procedures">View procedures</a> 
