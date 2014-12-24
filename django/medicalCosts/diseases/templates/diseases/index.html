@@ -1,0 +1,17 @@
+<h2>Diseases</h2>
+{% if diseases %}
+  <ul>
+  {% for disease in diseases %}
+    <li><a href="/diseases/disease/{{ disease.id }}/">{{ disease.name }}</a></li>
+    <li>Procedures for disease</li>
+    <ul>
+    {% for procedure in disease.procedure_set.all %}
+      <li><a href="/diseases/procedure/{{ procedure.id }}/">{{ procedure.name }}</a></li>
+    {% endfor %}
+    </ul>
+    <br>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No diseases are available.</p>
+{% endif %}

@@ -9,6 +9,8 @@ class OperationInline(admin.TabularInline):
 class ProcedureAdmin(admin.ModelAdmin):
   inlines = [OperationInline]
   list_display = ('name', 'disease')
+  list_filter = ['name']
+  search_fields = ['name', 'disease__name']
 
 class ProcedureInline(admin.TabularInline):
   model = Procedure
@@ -16,6 +18,8 @@ class ProcedureInline(admin.TabularInline):
 
 class DiseaseAdmin(admin.ModelAdmin):
   inlines = [ProcedureInline]
+  list_filter = ['name']
+  search_fields = ['name']
 
 admin.site.register(Disease, DiseaseAdmin)
 admin.site.register(Procedure, ProcedureAdmin)

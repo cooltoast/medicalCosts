@@ -1,0 +1,10 @@
+{% if operation %}
+  <a href="/diseases/operation/{{ operation.id }}/">Operation for: {{ operation.procedure }}</a>
+  <ul>
+  <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.location }}</a></li>
+  <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.cost }}</a></li>
+  <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.date }}</a></li>
+  </ul>
+{% else %}
+  <p>This operation is unavailable.</p>
+{% endif %}
