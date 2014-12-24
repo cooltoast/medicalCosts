@@ -4,10 +4,10 @@
   <ul>
   {% for operation in procedure.operation_set.all %}
     <br>
-    <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.procedure }}</a></li>
-    <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.location }}</a></li>
-    <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.cost }}</a></li>
-    <li><a href="/diseases/operation/{{ operation.id }}/">{{ operation.date }}</a></li>
+    <li><a href="{% url 'operation' operation.id %}">{{ operation.procedure }}</a></li>
+    <li><a href="{% url 'operation' operation.id %}">{{ operation.location }}</a></li>
+    <li><a href="{% url 'operation' operation.id %}">{{ operation.cost }}</a></li>
+    <li><a href="{% url 'operation' operation.id %}">{{ operation.date }}</a></li>
     <br>
   {% endfor %}
   </ul>
