@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'medicalCosts.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'gingerio',
-    'USER': 'me',
-    'PASSWORD': 'monkeys',
+    'NAME': keys['db_name'],
+    'USER': keys['username'],
+    'PASSWORD': keys['password'],
     'HOST': 'localhost',
     'PORT': '',
   }
