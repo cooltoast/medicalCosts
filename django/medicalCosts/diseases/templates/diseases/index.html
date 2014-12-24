@@ -2,11 +2,11 @@
 {% if diseases %}
   <ul>
   {% for disease in diseases %}
-    <li><a href="{% url 'disease' disease.id %}">{{ disease.name }}</a></li>
+    <li><a href="{% url 'diseases:disease' disease.id %}">{{ disease.name }}</a></li>
     <li>Procedures for disease</li>
     <ul>
     {% for procedure in disease.procedure_set.all %}
-      <li><a href="{% url 'procedure' procedure.id %}">{{ procedure.name }}</a></li>
+      <li><a href="{% url 'diseases:procedure' procedure.id %}">{{ procedure.name }}</a></li>
     {% endfor %}
     </ul>
     <br>
