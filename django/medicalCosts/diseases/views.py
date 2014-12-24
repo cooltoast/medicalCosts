@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from diseases.models import Operation, Procedure, Disease
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.views import generic
+
+from diseases.models import Operation, Procedure, Disease
 
 def index(request):
   return render(request, 'diseases/index.html', { 'diseases': Disease.objects.order_by('name') })
