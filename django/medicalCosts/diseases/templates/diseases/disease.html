@@ -1,4 +1,5 @@
 {% if disease %}
+  <a href="{% url 'diseases:index' %}">Back to diseases</a>
   <ul>
   <li><a href="{% url 'diseases:disease' disease.id %}">{{ disease.name }}</a></li>
   <li>Procedures for disease</li>
