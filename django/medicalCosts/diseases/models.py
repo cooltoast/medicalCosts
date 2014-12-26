@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 from django.utils import timezone
 
 # Create your models here.
@@ -12,12 +13,16 @@ class Procedure(models.Model):
   name = models.CharField(max_length=100)
   disease = models.ForeignKey('Disease')
 
-  def __str__(self):
+  def __unicode__(self):
     return self.name
 
 class Disease(models.Model):
   name = models.CharField(max_length=100)
 
-  def __str__(self):
+  def __unicode__(self):
     return self.name
 
+class DiseaseForm(ModelForm):
+  class Meta:
+    model = Disease
+    fields = '__all__'
