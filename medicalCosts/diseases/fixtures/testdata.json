@@ -1,0 +1,52 @@
+[
+  {
+    "model": "diseases.disease",
+    "pk": 1,
+    "fields": {
+      "name":"syphilis"
+    }
+  },
+  {
+    "model": "diseases.disease",
+    "pk": 2,
+    "fields": {
+      "name":"chlamydia"
+    }
+  },
+  {
+    "model": "diseases.procedure",
+    "pk": 1,
+    "fields": {
+      "name":"apply ointment",
+      "disease":1
+    }
+  },
+  {
+    "model": "diseases.procedure",
+    "pk": 2,
+    "fields": {
+      "name":"pop some pills",
+      "disease":2
+    }
+  },
+  {
+    "model": "diseases.operation",
+    "pk": 1,
+    "fields": {
+      "procedure":1,
+      "location":"bathroom",
+      "cost":"10",
+      "date":"2015-03-04"
+    }
+  },
+  {
+    "model": "diseases.operation",
+    "pk": 2,
+    "fields": {
+      "procedure":2,
+      "location":"kitchen",
+      "cost":"15",
+      "date":"2015-03-04"
+    }
+  }
+]
