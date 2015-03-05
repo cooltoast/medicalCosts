@@ -2,8 +2,8 @@
 *.db
 *~
 *#
-django/medicalCosts/venv/*
-django/medicalCosts/keys.json
+medicalCosts/venv/*
+medicalCosts/keys.json
 
 # Created by https://www.gitignore.io
 
