@@ -5,6 +5,9 @@ from django.views import generic
 
 from diseases.models import Operation, Procedure, Disease
 
+from rest_framework import viewsets
+from diseases.serializers import DiseaseSerializer, ProcedureSerializer, OperationSerializer
+
 def index(request):
   return render(request, 'diseases/index.html', { 'diseases': Disease.objects.order_by('name') })
 
@@ -38,3 +41,26 @@ def procedure(request, procedure_id):
 def operation(request, operation_id):
   operation = get_object_or_404(Operation, pk=operation_id)
   return render(request, 'diseases/operation.html', {'operation': operation})
+
+
+class DiseaseViewSet(viewsets.ModelViewSet):
+  """
+  API endpoint that allows diseases to be viewed or edited.
+  """
+  queryset = Disease.objects.all()
+  serializer_class = DiseaseSerializer
+
+
+class ProcedureViewSet(viewsets.ModelViewSet):
+  """
+  API endpoint that allows procedures to be viewed or edited.
+  """
+  queryset = Procedure.objects.all()
+  serializer_class = ProcedureSerializer
+
+class OperationViewSet(viewsets.ModelViewSet):
+  """
+  API endpoint that allows operations to be viewed or edited.
+  """
+  queryset = Operation.objects.all()
+  serializer_class = OperationSerializer
